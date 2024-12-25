@@ -14,7 +14,7 @@ export default function ProductList({ name, image, category, price }: Products )
         />
         <CartButton onClick={() => console.log("add to cart")} />
       </figure>
-      <p className="text-sm text-Rose-300 font-semibold">{category}</p>
+      <p className="text-xs text-Rose-300 font-semibold">{category}</p>
       <h3 className="text-sm font-bold">{name}</h3>
       <p className="text-sm text-Red font-semibold">${price}</p>
     </div>
