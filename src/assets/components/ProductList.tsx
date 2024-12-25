@@ -11,8 +11,6 @@ export default function ProductList({ products }: Props) {
   const cart = useCartStore((state) => state.cart);
   const addToCart = useCartStore((state) => state.addToCart);
 
-  console.log(cart);
-
   return (
     <>
       {products.map((item) => (
@@ -23,9 +21,9 @@ export default function ProductList({ products }: Props) {
                 <img
                   src={`./src/${item.image.desktop.slice(2)}`}
                   alt={item.name}
-                  className={`w-full h-full rounded-lg border-2 border-Red object-cover}`}
+                  className={`w-full h-full rounded-lg outline outline-Red border-Red object-cover}`}
                 />
-                <CartButtonSelected item={item} />
+                <CartButtonSelected item={item}/>
               </>
             ) : (
               <>
