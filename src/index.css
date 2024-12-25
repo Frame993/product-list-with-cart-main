@@ -6,6 +6,18 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Red Hat Display", sans-serif;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: "Red Hat Text", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  @apply bg-Rose-100 text-Rose-900;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 700;
+}
