@@ -1,15 +1,15 @@
 import CartButton from "./CartButton";
 import { useCartStore } from "../../store/cart-store";
-import { Products } from "../../interfaces/products";
 import CartButtonSelected from "./CartButtonSelected";
+import PRODUCTS from "../../data.json";
+import { Products } from "../../interfaces/products";
 
-interface Props {
-  products: Products[];
-}
 
-export default function ProductList({ products }: Props) {
+export default function ProductList() {
   const cart = useCartStore((state) => state.cart);
   const addToCart = useCartStore((state) => state.addToCart);
+
+  const products : Products[] = PRODUCTS;
 
   return (
     <>
@@ -23,7 +23,7 @@ export default function ProductList({ products }: Props) {
                   alt={item.name}
                   className={`w-full h-full rounded-lg outline outline-Red border-Red object-cover}`}
                 />
-                <CartButtonSelected item={item}/>
+                <CartButtonSelected item={item} />
               </>
             ) : (
               <>
@@ -32,7 +32,7 @@ export default function ProductList({ products }: Props) {
                   alt={item.name}
                   className={`w-full h-full rounded-lg object-cover}`}
                 />
-              <CartButton onClick={() => addToCart(item)} />
+                <CartButton onClick={() => addToCart(item)} />
               </>
             )}
           </figure>

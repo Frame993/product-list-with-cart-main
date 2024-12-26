@@ -6,7 +6,7 @@ import carbon_img from "../images/icon-carbon-neutral.svg";
 export default function Cart() {
   const cart = useCartStore((state) => state.cart);
   const removeFromCart = useCartStore((state) => state.removeFromCart);
-  const clearCart = useCartStore((state) => state.clearCart);
+  const clearCart = useCartStore((state) => state.clearCart); 
 
   return (
     <aside className="w-[350px] bg-Rose-50 rounded-lg p-6 flex flex-col justify-center items-start">
@@ -32,10 +32,10 @@ export default function Cart() {
                 <div>
                   <p className="text-xs font-semibold">{item.name}</p>
                   <div className="flex gap-1">
-                    <p className="text-xs font-semibold text-Red">4x</p>
+                    <p className="text-xs font-semibold text-Red">x{item.quantity}</p>
                     <p className="text-xs">
                       @ {"$" + item.price}{" "}
-                      <span className="font-semibold">{"$" + item.price}</span>
+                      <span className="font-semibold">{"$" + item.price * item.quantity}</span>
                     </p>
                   </div>
                 </div>
@@ -49,8 +49,9 @@ export default function Cart() {
 
           <div className="flex w-full items-center justify-between my-4">
             <p className="text-xs font-semibold">Order Total</p>
-            <p className="text-2xl font-bold text-Rose-900">
-              {"$" + cart.reduce((total, item) => total + item.price, 0)}
+            <p className="text-3xl font-bold text-Rose-900">
+              {/* total */}
+              {"$" + cart.reduce((acc, item) => acc + item.price * item.quantity, 0)}
             </p>
           </div>
 

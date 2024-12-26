@@ -8,17 +8,18 @@ interface Props {
 }
 
 export default function CartButtonSelected({ item }: Props) {
+  
   const cart = useCartStore((state) => state.cart);
   const addToCart = useCartStore((state) => state.addToCart);
-  const removeFromCart = useCartStore((state) => state.removeFromCart);
+  const decreaseQuantityFromCart = useCartStore((state) => state.decreaseQuantityFromCart);
 
-  const count = cart.filter((product) => product.id === item.id).length;
+  const count = cart.filter((product) => product.id === item.id)[0].quantity;
 
   return (
     <>
       <div className="flex items-center justify-between gap-1 px-2 py-2 rounded-full bg-Red border border-Red absolute -bottom-4 left-1/2 -translate-x-1/2 w-[150px]">
         {/* REMOVE */}
-        <button onClick={() => removeFromCart(item.id)}>
+        <button onClick={() => decreaseQuantityFromCart(item.id)}>
           <img
             src={decrement}
             alt="cart icon"
