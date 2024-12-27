@@ -4,14 +4,14 @@ import Cart from "./assets/components/Cart";
 
 export default function App() {
   return (
-    <main className="my-8 flex w-[1400px] mx-auto gap-8 justify-center">
-      <section>
-        <h1 className="text-3xl mb-4">Dessert</h1>
+    <main className="flex md:flex-row flex-col md:w-[1400px] w-[90%] justify-center mx-auto gap-8 my-8">
+      <section className="flex flex-col">
+        <h1 className="text-5xl mb-8 text-left">Desserts</h1>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-x-4 gap-y-8">
           <ProductList />
         </div>
       </section>
-      <section>
+      <section className="flex flex-col">
         <Cart />
       </section>
     </main>

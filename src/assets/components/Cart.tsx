@@ -9,7 +9,7 @@ export default function Cart() {
   const clearCart = useCartStore((state) => state.clearCart); 
 
   return (
-    <aside className="w-[350px] bg-Rose-50 rounded-lg p-6 flex flex-col justify-center items-start">
+    <aside className="md:w-[350px] w-full bg-Rose-50 rounded-lg p-6 flex flex-col justify-center items-start">
       <div className="flex justify-between w-full mb-4">
         <h2 className="text-lg font-bold text-Red">
           Your Cart <span>({cart.length})</span>

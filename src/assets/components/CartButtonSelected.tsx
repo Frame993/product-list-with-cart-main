@@ -17,7 +17,7 @@ export default function CartButtonSelected({ item }: Props) {
 
   return (
     <>
-      <div className="flex items-center justify-between gap-1 px-2 py-2 rounded-full bg-Red border border-Red absolute -bottom-4 left-1/2 -translate-x-1/2 w-[150px]">
+      <div className="flex items-center justify-between gap-1 px-2 py-2 rounded-full bg-Red border border-Red w-[150px]">
         {/* REMOVE */}
         <button onClick={() => decreaseQuantityFromCart(item.id)}>
           <img
