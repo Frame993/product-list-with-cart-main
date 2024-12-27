@@ -3,6 +3,7 @@ import ProductList from "./assets/components/ProductList";
 import Cart from "./assets/components/Cart";
 
 export default function App() {
+
   return (
     <main className="flex md:flex-row flex-col md:w-[1400px] w-[90%] justify-center mx-auto gap-8 my-8">
       <section className="flex flex-col">

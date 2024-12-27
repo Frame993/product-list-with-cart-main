@@ -2,9 +2,11 @@ import { useCartStore } from "../../store/cart-store";
 import empty_cart from "../images/illustration-empty-cart.svg";
 import delete_icon from "../images/icon-remove-item.svg";
 import carbon_img from "../images/icon-carbon-neutral.svg";
+import useLocalStore from "../../hooks/useLocalStore";
 
 export default function Cart() {
-  const cart = useCartStore((state) => state.cart);
+  const { cart } = useLocalStore();
+  // const cart = useCartStore((state) => state.cart);
   const removeFromCart = useCartStore((state) => state.removeFromCart);
   const clearCart = useCartStore((state) => state.clearCart); 
 

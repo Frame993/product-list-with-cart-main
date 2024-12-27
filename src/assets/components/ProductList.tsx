@@ -2,9 +2,12 @@ import { useCartStore } from "../../store/cart-store";
 import PRODUCTS from "../../data.json";
 import { Products } from "../../interfaces/products";
 import CartButtonMain from "./CartButtonMain";
+import useLocalStore from "../../hooks/useLocalStore";
 
 export default function ProductList() {
-  const cart = useCartStore((state) => state.cart);
+
+  const { cart } = useLocalStore();
+  // const cart = useCartStore((state) => state.cart);
   const products: Products[] = PRODUCTS;
 
   return (

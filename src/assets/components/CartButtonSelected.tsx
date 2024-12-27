@@ -1,3 +1,4 @@
+import useLocalStore from "../../hooks/useLocalStore";
 import { Products } from "../../interfaces/products";
 import { useCartStore } from "../../store/cart-store";
 import decrement from "../images/icon-decrement-quantity.svg";
@@ -9,7 +10,8 @@ interface Props {
 
 export default function CartButtonSelected({ item }: Props) {
   
-  const cart = useCartStore((state) => state.cart);
+  // const cart = useCartStore((state) => state.cart);
+  const { cart } = useLocalStore();
   const addToCart = useCartStore((state) => state.addToCart);
   const decreaseQuantityFromCart = useCartStore((state) => state.decreaseQuantityFromCart);
 
