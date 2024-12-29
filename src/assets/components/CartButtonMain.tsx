@@ -2,7 +2,6 @@ import CartButtonSelected from "./CartButtonSelected";
 import CartButton from "./CartButton";
 import { Products } from "../../interfaces/products";
 import { useCartStore } from "../../store/cart-store";
-import useLocalStore from "../../hooks/useLocalStore";
 
 interface Props {
   className?: string;
@@ -11,16 +10,14 @@ interface Props {
 
 export default function CartButtonMain({ className, item }: Props) {
 
-  const { cart } = useLocalStore();
-  // const cart = useCartStore((state) => state.cart);
-  const addToCart = useCartStore((state) => state.addToCart);
+  const cart = useCartStore((state) => state.cart);
 
   return (
     <div className={`${className}`}>
       {cart.some((product) => product.id === item.id) ? (
         <CartButtonSelected item={item} />
       ) : (
-        <CartButton onClick={() => addToCart(item)} />
+        <CartButton item={item}/>
       )}
     </div>
   );
