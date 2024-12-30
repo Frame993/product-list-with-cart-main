@@ -13,7 +13,7 @@ export default function OrderConfirmation({ onclick, handleConfirm }: Props) {
       onClick={onclick}
       className="flex flex-col items-center justify-center w-full h-screen bg-black/50 z-50 fixed top-0"
     >
-      <div className="flex flex-col items-left justify-center gap-2 bg-white rounded-lg p-8 w-[450px]">
+      <div className="flex flex-col gap-2 bg-white rounded-lg md:w-[450px] w-[90%] max-h-[90%] p-6 overflow-y-auto">
         <div className="flex flex-col gap-1 mb-6">
           <img src={IconCheck} alt="icon check" width={32} className="mb-4" />
           <h1 className="text-3xl text-Rose-900 font-bold">Order Confirmed</h1>
@@ -58,10 +58,14 @@ export default function OrderConfirmation({ onclick, handleConfirm }: Props) {
             </p>
           </div>
         </div>
-        <button className="w-full bg-Red text-white py-4 rounded-full hover:bg-Rose-900 text-sm mt-4"
-          onClick={handleConfirm}>
-          Start New Order
-        </button>
+        <div className="flex flex-col mt-4">
+          <button
+            className="bg-Red text-white py-4 rounded-full hover:bg-Rose-900 text-sm"
+            onClick={handleConfirm}
+          >
+            Start New Order
+          </button>
+        </div>
       </div>
     </section>
   );
