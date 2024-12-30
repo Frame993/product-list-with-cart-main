@@ -1,12 +1,17 @@
 import { useEffect } from "react";
 import { useCartStore } from "../store/cart-store";
 
-export default function useLocalStore() {
+export function useLocalStore() {
   const cart = useCartStore((state) => state.cart);
 
   useEffect(() => {
-    window.localStorage.setItem("cart", JSON.stringify(cart));
-  }, [cart]);
+    const cart = localStorage.getItem("cart");
+    if (cart) {
+      useCartStore.getState().updateCart(JSON.parse(cart));
+    }
+  }, []);
 
-  return { cart };
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(useCartStore.getState().cart));
+  }, [cart]);
 }
