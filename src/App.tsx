@@ -1,25 +1,26 @@
 import "./index.css";
 import ProductList from "./assets/components/ProductList";
 import Cart from "./assets/components/Cart";
-import { useEffect } from "react";
+import { useLocalStore } from "./hooks/useLocalStore";
+import OrderConfirmation from "./assets/components/OrderConfirmationModal";
+import { createPortal } from "react-dom";
+import { useState } from "react";
 import { useCartStore } from "./store/cart-store";
 
 export default function App() {
+  const [order, setOrder] = useState(false);
 
-  const initialCart = useCartStore((state) => state.cart);
+  useLocalStore();
+  const clearCart = useCartStore((state) => state.clearCart);
 
-  useEffect(() => {
-    const cart = localStorage.getItem("cart");
-    if (cart) {
-      useCartStore.getState().updateCart(JSON.parse(cart));
-    }
-  }, []);
+  const handleOrderSuccess = () => {
+    setOrder(true);
+  };
 
-  useEffect(() => {
-    localStorage.setItem("cart", JSON.stringify(useCartStore.getState().cart));
-  }, [initialCart]);
-
- 
+  const handleConfirm = () => {
+    setOrder(false);
+    clearCart();
+  };
 
   return (
     <main className="flex md:flex-row flex-col md:w-[1400px] w-[90%] justify-center mx-auto gap-8 my-8">
@@ -30,8 +31,16 @@ export default function App() {
         </div>
       </section>
       <section className="flex flex-col">
-        <Cart />
+        <Cart onClick={handleOrderSuccess} />
       </section>
+      {order &&
+        createPortal(
+          <OrderConfirmation
+            onclick={() => setOrder(false)}
+            handleConfirm={() => handleConfirm()}
+          />,
+          document.body
+        )}
     </main>
   );
 }
