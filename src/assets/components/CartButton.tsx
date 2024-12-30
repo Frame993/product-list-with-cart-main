@@ -1,6 +1,6 @@
 import { Products } from "../../interfaces/products";
 import { useCartStore } from "../../store/cart-store";
-import cardIcon from "../images/icon-add-to-cart.svg";
+import cardIcon from "/icon-add-to-cart.svg";
 
 type Props = {
   item: Products;

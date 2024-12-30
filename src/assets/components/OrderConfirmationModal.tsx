@@ -1,5 +1,5 @@
 import { useCartStore } from "../../store/cart-store";
-import IconCheck from "../images/icon-order-confirmed.svg";
+import IconCheck from "../../../public/icon-order-confirmed.svg";
 
 interface Props {
   onclick?: () => void;
@@ -28,7 +28,7 @@ export default function OrderConfirmation({ onclick, handleConfirm }: Props) {
               >
                 <div className="flex gap-4 items-center">
                   <img
-                    src={`./src/${item.image.mobile}`}
+                    src={item.image.thumbnail}
                     alt={item.name}
                     width={32}
                     className="object-cover rounded-lg aspect-square"

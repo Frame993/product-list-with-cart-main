@@ -1,7 +1,7 @@
 import { Products } from "../../interfaces/products";
 import { useCartStore } from "../../store/cart-store";
-import decrement from "../images/icon-decrement-quantity.svg";
-import increment from "../images/icon-increment-quantity.svg";
+import decrement from "/icon-decrement-quantity.svg";
+import increment from "/icon-increment-quantity.svg";
 
 interface Props {
   item: Products;

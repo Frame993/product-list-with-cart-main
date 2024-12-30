@@ -1,7 +1,7 @@
 import { useCartStore } from "../../store/cart-store";
-import empty_cart from "../images/illustration-empty-cart.svg";
-import delete_icon from "../images/icon-remove-item.svg";
-import carbon_img from "../images/icon-carbon-neutral.svg";
+import empty_cart from "../../../public/illustration-empty-cart.svg";
+import delete_icon from "../../../public/icon-remove-item.svg";
+import carbon_img from "../../../public/icon-carbon-neutral.svg";
 
 interface Props {
   onClick: () => void;

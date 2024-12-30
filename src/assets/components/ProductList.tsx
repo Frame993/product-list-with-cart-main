@@ -15,7 +15,7 @@ export default function ProductList() {
         <li key={item.id} className={`flex flex-col`}>
           <figure className="w-full relative h-[200px] md:h-[300px] md:w-[300px] md:mb-6 mb-4 rounded-lg">
             <img
-              src={`./src/${item.image.desktop}`}
+              src={`${item.image.desktop}`}
               alt={item.name}
               className={`w-full h-full object-cover shadow-sm rounded-lg ${
                 cart.some((product) => product.id === item.id)
