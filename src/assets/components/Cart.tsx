@@ -3,10 +3,14 @@ import empty_cart from "../images/illustration-empty-cart.svg";
 import delete_icon from "../images/icon-remove-item.svg";
 import carbon_img from "../images/icon-carbon-neutral.svg";
 
-export default function Cart() {
+interface Props {
+  onClick: () => void;
+}
+
+export default function Cart({ onClick }: Props) {
   const cart = useCartStore((state) => state.cart);
   const removeFromCart = useCartStore((state) => state.removeFromCart);
-  const clearCart = useCartStore((state) => state.clearCart); 
+  const clearCart = useCartStore((state) => state.clearCart);
 
   return (
     <aside className="md:w-[350px] w-full bg-Rose-50 rounded-lg p-6 flex flex-col justify-center items-start">
@@ -15,7 +19,11 @@ export default function Cart() {
           Your Cart <span>({cart.length})</span>
         </h2>
         <button
-          className={`font-semibold text-xs hover:text-Red ${cart.length > 0 ? "text-Rose-900 " : "pointer-events-none text-Rose-300"}`}
+          className={`font-semibold text-xs hover:text-Red ${
+            cart.length > 0
+              ? "text-Rose-900 "
+              : "pointer-events-none text-Rose-300"
+          }`}
           onClick={() => clearCart()}
         >
           Clear
@@ -31,11 +39,15 @@ export default function Cart() {
               >
                 <div>
                   <p className="text-xs font-semibold">{item.name}</p>
-                  <div className="flex gap-1">
-                    <p className="text-xs font-semibold text-Red">x{item.quantity}</p>
-                    <p className="text-xs">
+                  <div className="flex gap-2">
+                    <p className="text-xs font-semibold text-Red">
+                      x{item.quantity}
+                    </p>
+                    <p className="text-xs font-medium text-Rose-400">
                       @ {"$" + item.price}{" "}
-                      <span className="font-semibold">{"$" + item.price * item.quantity}</span>
+                      <span className="font-semibold ml-1 ">
+                        {"$" + item.price * item.quantity}
+                      </span>
                     </p>
                   </div>
                 </div>
@@ -51,7 +63,8 @@ export default function Cart() {
             <p className="text-xs font-semibold">Order Total</p>
             <p className="text-3xl font-bold text-Rose-900">
               {/* total */}
-              {"$" + cart.reduce((acc, item) => acc + item.price * item.quantity, 0)}
+              {"$" +
+                cart.reduce((acc, item) => acc + item.price * item.quantity, 0)}
             </p>
           </div>
 
@@ -61,9 +74,14 @@ export default function Cart() {
               This is a<span>Carbon Neutral</span>delievery
             </p>
           </div>
-          <button className="w-full bg-Red text-white py-4 rounded-full hover:bg-Rose-900">
+          {/* button order */}
+          <button
+            className="w-full bg-Red text-white py-4 rounded-full hover:bg-Rose-900"
+            onClick={onClick}
+          >
             Confirm Order
           </button>
+          {/* button order */}
         </>
       ) : (
         <div className="flex flex-col items-center gap-4 p-8 w-full">
